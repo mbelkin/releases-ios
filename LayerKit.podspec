@@ -9,8 +9,11 @@ Pod::Spec.new do |s|
   s.requires_arc = true
   s.source = { git: 'https://github.com/layerhq/releases-ios.git', tag: "v#{s.version}" }
 
-  s.platform = :ios, '8.0'
-  s.ios.platform             = :ios, '8.0'
-  s.ios.vendored_framework   = 'LayerKit.framework'
-  s.ios.frameworks = ["CFNetwork", "Security", "MobileCoreServices", "SystemConfiguration", "UIKit"]
+  s.platform = :ios, '7.0'
+  s.ios.platform             = :ios, '7.0'
+  s.ios.preserve_paths       = 'LayerKit.embeddedframework/LayerKit.framework'
+  s.ios.public_header_files  = 'LayerKit.embeddedframework/LayerKit.framework/Versions/A/Headers/*.h'
+  s.ios.resource             = 'LayerKit.embeddedframework/LayerKit.framework/Versions/A/Resources/**/*'
+  s.ios.vendored_frameworks  = 'LayerKit.embeddedframework/LayerKit.framework'
+  s.ios.frameworks = ["CFNetwork", "Security", "MobileCoreServices", "SystemConfiguration"]
 end
